@@ -1,0 +1,46 @@
+body {
+	background: #F1F1EE url(img/site-bg.jpg) repeat;
+	color: #8A8A8A;
+	padding-top: 30px;
+	padding-bottom: 40px;
+}
+.sidebar-nav {
+	padding: 9px 0;
+}
+.container {
+	border: 3px solid #e7e7e7;
+	background: #fff;
+	padding: 15px 30px;
+}
+.well {
+	box-shadow: none;
+	border: none;
+}
+a {
+	color: #F15755;
+}
+a:hover {
+	color: #cf2e2c;
+}
+.nav-list .active > a, .nav-list .active > a:hover {
+	background-color: #F15755;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Open Sans Condensed', sans-serif;
+}	
+p {
+	line-height: 20px;
+	margin: 0 0 12px;
+}
+.span3, .span9 {
+	border-top: 5px solid #F15755;
+	margin-top: 5px;
+	padding-top: 15px;
+}
+h1 a {
+	color: #333333;
+}
+h1 a:hover {
+	color: #333333;
+	text-decoration: none;
+}
