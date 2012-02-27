@@ -31,18 +31,18 @@
 <p>Now that you are calling Mootools into your page, you need a place to write the code.  There are two options:</p>
 <p>1. Place the code between script tags in your head:</p>
 
-<pre>&lt;script type=&quot;text/javascript&quot;&gt;&lt;!--mce:0--&gt;&lt;/script&gt;</pre>
+<pre class="prettyprint">&lt;script type=&quot;text/javascript&quot;&gt;&lt;!--mce:0--&gt;&lt;/script&gt;</pre>
 
 <p>2. Create an external JavaScript file and link to it in your head:</p>
 
-<pre>&lt;script src=&quot;myJavaScriptFile.js&quot; type=&quot;text/javascript&quot;&gt;&lt;!--mce:1--&gt;&lt;/script&gt;</pre>
+<pre class="prettyprint">&lt;script src=&quot;myJavaScriptFile.js&quot; type=&quot;text/javascript&quot;&gt;&lt;!--mce:1--&gt;&lt;/script&gt;</pre>
 
 <p>From here on out, you can use either method.  I will often call the functions within the domready event inside the script tags, but create my functions in an external JavaScript file.</p>
 
 <h3>Put it in the domready</h3>
 <p>Mootools functions must be called within the domready event.</p>
 
-<pre>
+<pre class="prettyprint">
 window.addEvent('domready', function() {
     exampleFunction();
 });
@@ -51,7 +51,7 @@ window.addEvent('domready', function() {
 <h3>Put it in a Function</h3>
 <p>You can still build your function outside of the domready, then call it within.</p>
 
-<pre>
+<pre class="prettyprint">
 var exampleFunction = function() {
      alert('hello')
 };

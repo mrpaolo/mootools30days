@@ -12,6 +12,21 @@
 <!-- Css -->
 <link href="css/style.css" rel="stylesheet">
 
+<!-- MooTools -->
+<script type="text/javascript" src="js/mootools-core-1.4.5-full-compat-yc.js" ></script>
+<script type="text/javascript" src="js/mootools-more-1.4.0.1.js" ></script>
+
+<!-- http://code.google.com/p/google-code-prettify/ -->
+<link href="css/prettify.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="js/prettify.js"></script>
+
+<script type="text/javascript">
+window.addEvent('load', function() {
+	prettyPrint();
+});
+</script>
+
+
 <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
 <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
