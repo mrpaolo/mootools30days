@@ -1,3 +1,6 @@
+<!-- Working Examples for Day 05 -->
+<script type="text/javascript" src="days/js/05.js" ></script>
+
 <h2>Event Handling in Mootools 1.2</h2>
 <p>If you haven&#8217;t already, be sure and check out the rest of the <a href="index.php?day=04">Mootools 1.2 tutorials</a> in our 30 days series.</p>
 
