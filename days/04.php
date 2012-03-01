@@ -1,3 +1,6 @@
+<!-- Working Examples for Day 04 -->
+<script type="text/javascript" src="days/js/04.js" ></script>
+
 <h2>Functions and Mootools 1.2</h2>
 <p>Welcome to day 4 of the 30 Days of Mootools. If you haven&#8217;t already, go check out the previous  <a href="index.php?day=04">Mootools Tutorials</a> in the series. Today we&#8217;re taking a step back from the Mootools to go over the basics of functions in javascript.</p>
 
