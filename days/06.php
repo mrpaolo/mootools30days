@@ -1,3 +1,6 @@
+<!-- Working Examples for Day 06 -->
+<script type="text/javascript" src="days/js/06.js" ></script>
+
 <h2>Manipulating HTML DOM Elements with Mootools 1.2</h2>
 <p>If you haven&#8217;t already, be sure and check out the rest of the <a href="index.php?day=05">Mootools 1.2 tutorials</a> in our 30 days series.</p>
 
@@ -259,13 +262,12 @@ window.addEvent('domready', function() {
 </pre>
 
 <p>
-<div id="newElementContainer"></div>
+<div class="alert alert-info" id="newElementContainer"></div>
 </p>
 <p>ID:<br /><input id="id_input" name="id" /></p>
 <p>text:<br /><input id="text_input" name="text" /></p>
 <p><button class="btn btn-primary" id="new_div">create a new div</button></p>
 <p><button class="btn btn-primary" id="remove_div">remove all new divs</button></p>
-<p>(try putting &#8220;ilovemilk&#8221; as the id)</p>
 
 <h3>To Learn More&#8230;</h3>
 <p>Make sure to take some time with the Elements section within the Mootools docs:</p>
@@ -277,4 +279,4 @@ window.addEvent('domready', function() {
 </ul>
 
 <h4>Tomorrow&#8217;s tutorial</h4>
-<p><a href="index.php?day=06">30 Days of Mootools, Day 7 - Setting and Getting Style Properties</a></p>
+<p><a href="index.php?day=07">30 Days of Mootools, Day 7 - Setting and Getting Style Properties</a></p>
