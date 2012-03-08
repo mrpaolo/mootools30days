@@ -1,6 +1,7 @@
 body {
 	background: #F1F1EE url(../img/site-bg.jpg) repeat;
-	color: #666;
+	/*color: #666;*/
+	color: #525252;
 	padding-top: 30px;
 	padding-bottom: 40px;
 }
@@ -17,13 +18,13 @@ body {
 	border: none;
 }
 a {
-	color: #F15755;
+	color: #EF3B24;
 }
 a:hover {
 	color: #cf2e2c;
 }
 .nav-list .active > a, .nav-list .active > a:hover {
-	background-color: #F15755;
+	background-color: #EF3B24;
 }
 h1, h2, h3, h4, h5, h6 {
 	font-family: 'Open Sans Condensed', sans-serif;
@@ -33,7 +34,7 @@ p {
 	margin: 0 0 12px;
 }
 .span3, .span9 {
-	border-top: 5px solid #F15755;
+	border-top: 5px solid #EF3B24;
 	margin-top: 5px;
 	padding-top: 15px;
 }
