@@ -1,0 +1,232 @@
+---
+layout: default
+---
+<h2>Multiple morphs with Fx.Elements</h2>
+
+<p>Welcome back to 30 days of Mootools 1.2 tutorials.  If you haven&#8217;t already, be sure to check out <a href="index.php?day=01">the rest of our mootools series</a>.  Today, we are going to take a look at the Fx.Elements plugin, which is basically an extension of Fx.Morph.  Instead of applying to a single element, Fx.Elements allows you to add the Fx functionality to multiple dom elements in one go. This can be very useful when you are applying the same options to more than one element, as we saw in <a href="index.php?day=20">the final example on day 20</a>.</p>
+
+<h3>The Basics</h3>
+<p>Implementing Fx.Elements looks just like Fx.Morph. The difference between the two doesn&#8217;t come into play until you .start({}) an effect or .set({}) some styles.</p>
+<p>To keep things tidy, lets first set up an array to pass to Fx.Elements.</p>
+
+<pre class="prettyprint">
+var fxElementsArray = $$('.myElementClass');
+</pre>
+
+<p>Now we can pass our array to the Fx.Elements object.</p>
+
+<pre class="prettyprint">
+var fxElementsObject = new Fx.Elements(fxElementsArray, {
+	//Fx Options
+	link: 'chain',
+	duration: 1000,
+	transition: 'sine:in:out',
+
+	//Fx Events
+	onStart: function(){
+		startInd.highlight('#C3E608');
+	}
+});
+</pre>
+
+<p>Just like Fx.Morph, Fx.Elements extends the Fx class, giving you access to all <a href="index.php?day=11">the Fx options and events.</a></p>
+
+<h3>.start({}) and .set({})</h3>
+<p>To start an Fx.Elements effect, or to set styles using Fx.Elements, you start out just as you would with Fx.Tween or Fx.Morph, but instead of setting the parameters directly on the Fx.Elements object, you refer to the elements via the index - the first element is 0, the second is 1, and so on.</p>
+
+<pre class="prettyprint">
+//you can set your styles with .set({...})
+fxElementsObject .set({
+	'0': {
+		'height': 10,
+		'width': 10,
+		'background-color': '#333'
+	},
+	'1': {
+		'width': 10,
+		'border': '1px dashed #333'
+	}
+});
+
+//or create a transition effect with .start({...})
+fxElementsObject .start({
+	'0': {
+		'height': [50, 200],
+		'width': 50,
+		'background-color': '#87AEE1'
+	},
+	'1': {
+		'width': [100, 200],
+		'border': '5px dashed #333'
+	}
+});
+</pre>
+
+<p>Just like Fx.Morph, you can set either a start value and end value for the element to transition to and from, or you can just set a single parameter (like we did with 0&#8217;s width) and the element will transition from its current state to the new parameter.</p>
+
+<p>And that&#8217;s pretty much all there is to Fx.Elements.  Check out the example below to see it in action.</p>
+
+<h3>Example</h3>
+<p>Here we have applied Fx.Elements to two elements.  There are a few different types of transitions to check out, along with a pause button which lets you freeze the transition mid stream.</p>
+
+<p>First, lets set up our elements, our control buttons (including reset, pause and resume), and a few indicators so we can better watch the process unfold.</p>
+
+<pre class="prettyprint">
+&lt;div id=&quot;start_ind&quot; class=&quot;ind&quot;&gt;onStart&lt;/div&gt;
+&lt;div id=&quot;cancel_ind&quot; class=&quot;ind&quot;&gt;onCancel&lt;/div&gt;
+&lt;div id=&quot;complete_ind&quot; class=&quot;ind&quot;&gt;onComplete&lt;/div&gt;
+&lt;div id=&quot;chain_complete_ind&quot; class=&quot;ind&quot;&gt;onChainComplete&lt;/div&gt;
+
+&lt;span id='buttons'&gt;
+	&lt;button id=&quot;fxstart&quot;&gt;Start A&lt;/button&gt;
+        &lt;button id=&quot;fxstartB&quot;&gt;Start B&lt;/button&gt;
+        &lt;button id=&quot;fxset&quot;&gt;Reset&lt;/button&gt;
+        &lt;button id=&quot;fxpause&quot;&gt;Pause&lt;/button&gt;
+        &lt;button id=&quot;fxresume&quot;&gt;Resume&lt;/button&gt;
+&lt;/span&gt;
+
+&lt;div class=&quot;myElementClass&quot;&gt;Element 0&lt;/div&gt;
+&lt;div class=&quot;myElementClass&quot;&gt;Element 1&lt;/div&gt;
+</pre>
+
+<p>Our css is nice and simple.</p>
+
+<pre class="prettyprint">
+.ind {
+	width: 200px;
+	padding: 10px;
+	background-color: #87AEE1;
+	font-weight: bold;
+	border-bottom: 1px solid white;
+}
+
+.myElementClass {
+	height: 50px;
+	width: 100px;
+	background-color: #FFFFCC;
+	border: 1px solid #FFFFCC;
+	padding: 20px;
+}
+
+#buttons {
+	margin: 20px 0;
+	display: block;
+}
+</pre>
+
+<p>Now for the mootools.</p>
+
+<pre class="prettyprint">
+var startFXElement = function(){
+
+	this.start({
+		'0': {
+			'height': [50, 200],
+			'width': 50,
+			'background-color': '#87AEE1'
+		},
+		'1': {
+			'width': [100, 200],
+			'border': '5px dashed #333'
+		}
+	});
+}
+
+var startFXElementB = function(){
+	this.start({
+		'0': {
+			'width': 500,
+			'background-color': '#333'
+		},
+		'1': {
+			'width': 500,
+			'border': '10px solid #DC1E6D'
+		}
+	});
+}
+
+
+var setFXElement = function(){
+	this.set({
+		'0': {
+			'height': 50,
+			'background-color': '#FFFFCC',
+			'width': 100
+		},
+		'1': {
+			'height': 50,
+			'width': 100,
+			'border': 'none'
+		}
+	});
+}
+
+
+window.addEvent('domready', function() {
+	
+	var fxElementsArray = $$('.myElementClass');
+	var startInd = $('start_ind');
+	var cancelInd = $('cancel_ind');
+	var completeInd = $('complete_ind');
+	var chainCompleteInd = $('chain_complete_ind');
+
+	var fxElementsObject = new Fx.Elements(fxElementsArray, {
+		
+		//Fx Options
+		link: 'chain',
+		duration: 1000,
+		transition: 'sine:in:out',
+
+		//Fx Events
+		onStart: function(){
+			startInd.highlight('#C3E608');
+		},
+		onCancel: function(){
+			cancelInd.highlight('#C3E608');
+		},
+		onComplete: function(){
+			completeInd.highlight('#C3E608');
+		},
+		onChainComplete: function(){
+			chainCompleteInd.highlight('#C3E608'); 
+		}
+	});
+
+	$('fxstart').addEvent('click', startFXElement.bind(fxElementsObject));
+	$('fxstartB').addEvent('click', startFXElementB.bind(fxElementsObject));
+	$('fxset').addEvent('click', setFXElement.bind(fxElementsObject));
+
+	$('fxpause').addEvent('click', function(){
+		fxElementsObject.pause();
+	});
+
+	$('fxresume').addEvent('click', function(){
+		fxElementsObject.resume();
+	});
+
+});
+</pre>
+
+<div id="start_ind" class="ind">onStart</div>
+<div id="cancel_ind" class="ind">onCancel</div>
+<div id="complete_ind" class="ind">onComplete</div>
+<div id="chain_complete_ind" class="ind">onChainComplete</div>
+
+<p>
+	<button id="fxstart" class="btn btn-primary">Start A</button>
+	<button id="fxstartB" class="btn btn-primary">Start B</button>
+	<button id="fxset" class="btn btn-primary">Reset</button>
+	<button id="fxpause" class="btn btn-primary">Pause</button>
+	<button id="fxresume" class="btn btn-primary">Resume</button>
+</p>
+
+<div class="myElementClass">Element 0</div>
+<div class="myElementClass">Element 1</div>
+
+<h3>To Learn More&#8230;</h3>
+<p>As you can see, Fx.Elements is very straightforward.  To learn more, check out the <a href="http://mootools.net/docs/Plugins/Fx.Elements">Fx.Element docs</a>, the <a href="http://mootools.net/docs/Fx/Fx.Morph">Fx.Morph</a> and <a href="/http://mootools.net/docs/Fx/Fx">Fx docs</a>.</p>
+
+<p>Also, be sure to check <a href="index.php?day=11">our tutorials on Fx.Morph and the Fx options and events</a>.</p>
+
+<h4>Tomorrow&#8217;s Tutorial</h4>
+<p><a href="index.php?day=23">Fx.Slide</a></p>				
