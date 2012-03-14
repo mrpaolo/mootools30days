@@ -1,0 +1,208 @@
+<h2>Periodicals and Hashes with Mootools 1.2</h2>
+<p>If you haven&#8217;t already, be sure and check out the rest of the <a href="index.php?day=14">Mootools 1.2 tutorials</a> in our 30 days series.</p>
+
+<p>Today&#8217;s tutorial is going to look at two areas, the first is .periodical(); and then we are going to get an introduction to hashes.  Periodical will do pretty much what it says—periodical will fire a function, periodically.  Hashes on the other hand are sets of key/value pairs.  Don&#8217;t worry if you are not familiar with hashes yet—we are going to do a quick introduction today and provide a few links for further reading.  And like everything with Mootools, once you see it the right way, its easy to use and incredibly helpful.</p>
+
+<h3>.periodical()</h3>
+<h4>The Basics</h4>
+<p>All you have to do is tack .periodical(); onto the end of a function, and just like that your function will fire periodically. Like always, there are few things you will need to define.  For starters, you will need the function you want to attach periodical to, as well as how often you want to fire (measured in milliseconds).</p>
+
+<pre class="prettyprint">
+var periodicalFunction = function(){
+	alert('again');
+}
+ 
+window.addEvent('domready', function() {
+	//number at the end indicates how often to fire, measure in milliseconds
+	var periodicalFunctionVar = periodicalFunction.periodical(100);
+});
+</pre>
+
+<h4>Built in .bind();</h4>
+<p>.periodical includes a great feature - it will automatically bind a var as the second parameter.  For example, if you wanted to pass a var outside the domready, you could bind it to the function you are firing periodically by setting it as the second parameter.</p>
+
+<pre class="prettyprint">
+window.addEvent('domready', function() {
+	//pass something to a var
+	var passedVar = $('elementID');
+
+	//now periodicalFunction will be able to use "this" to refer to "passedVar"
+	var periodicalFunctionVar = periodicalFunction.periodical(100, passedVar);
+});
+</pre>
+
+<h4>Stopping a periodical function</h4>
+<p><strong>$clear()</strong></p>
+<p>To stop a function from firing periodically once you have initiated it (like we did above), you can use $clear();.  Its very simple to use:</p>
+
+<pre class="prettyprint">
+//we clear the var that we passed the function and periodical to
+$clear(periodicalFunctionVar);
+</pre>
+
+<h4>Example</h4>
+<p>To put it all together, let&#8217;s use a few of the things we have learned up to now (and a few we haven&#8217;t) to create a timer.  First, set up the timer html, and then we are going to want to include a start button, a stop button and a reset button.  Also, we should create a bar that will get longer as time goes on. Finally, we should have a place to show how long the timer has been going.</p>
+
+<pre class="prettyprint">
+&lt;button id=&quot;timer_start&quot;&gt;start&lt;/button&gt;
+&lt;button id=&quot;timer_stop&quot;&gt;pause&lt;/button&gt;
+&lt;button id=&quot;timer_reset&quot;&gt;reset&lt;/button&gt;
+&nbsp;
+&lt;div id=&quot;timper_bar_wrap&quot;&gt;
+&lt;/div&gt;
+&nbsp;
+&lt;div id=&quot;timer_display&quot;&gt;0&lt;/div&gt;
+</pre>
+
+<p>Now, for the Mootools.</p>
+
+<pre class="prettyprint">
+var timerFunction = function(){
+	//each time this function is called
+	//the var currentTime will increment by one
+	//more on this below
+	//also notice the use of "this.counter"
+	//"this" is the hash
+	//and "counter" is the key
+	//again, more on this below
+	var currentTime = this.counter++;
+	
+	//here we change the content of the timer display div to the current time
+	$('timer_display').set('text', currentTime);
+	
+	//this changes the style width, letting us easily create a timer bar
+	$('timer_bar').setStyle('width', currentTime);
+}
+ 
+window.addEvent('domready', function() {
+	//this is a simple hash with one key/value pair
+	var currentCounter = new Hash({counter: 0});
+
+	//we initiate our periodical and pass and bind the hash var
+	var simpleTimer = timerFunction.periodical(100, currentCounter); 
+
+	//since we dont want the timer starting onload, we stop it
+	$clear(simpleTimer);
+
+	//add an event to the start button
+	//this sets the timer going again
+	$('timer_start').addEvent("click", function(){
+		simpleTimer = timerFunction.periodical(100, currentCounter);
+	});
+
+	//this clears the periodical, and highlights the timer bar
+	$('timer_stop').addEvent("click", function(){
+		$clear(simpleTimer);
+		$('timer_bar').highlight('#EFE02F');
+	});
+
+	$('timer_reset').addEvent("click", function(){
+		//reset first clears the periodical
+		$clear(simpleTimer);
+		
+		//and sets the counter to 0
+		//more on this later
+		currentCounter.set('counter', 0);
+
+		$('timer_display').set('text', currentCounter.counter);
+		$('timer_bar').setStyle('width', 0);
+
+	});
+});
+</pre>
+
+<p>
+	<button id="timer_start" class="btn btn-primary">start</button>
+	<button id="timer_stop" class="btn btn-primary">pause</button>
+	<button id="timer_reset" class="btn btn-primary">reset</button>
+</p>
+
+<div id="timper_bar_wrap"></div>
+<div id="timer_display">0</div>
+
+<h3>Intro to Hashes</h3>
+<h4>Creating a new hash</h4>
+<p>There are a few things in that example you may not have seen before.  First of all, we are using a hash.  Hashes are sets of key/value pairs, and they are similar to an array in that they hold multiple objects, but each object they hold is also assigned a key.  First, lets look at how to build a new hash:</p>
+
+<pre class="prettyprint">
+var hashVar = new Hash({
+	 'firstKey': 0,
+	 'secondKey': 0
+});
+</pre>
+
+<p>So you put the key on the left and the value on the right (as an aside to those of you out there who are familiar with hashes, we are only covering hashes at the most fundamental level.  We are going to reserve storing functions within hashes until we have had a chance to talk about classes).  Anyhow, there are many advantages to using a system like this.  First of all, you can multiple sets in a single object.  Retrieval becomes much simpler and its great for keeping complex data organized.</p>
+
+<h4>.set() and .get()</h4>
+<p>You can also use the familiar .set() and .get() with hash keys.  When you want set, you declare the key, then the value to set to.  When you want to get, you just declare what key you want.  That&#8217;s all there is to it.</p>
+
+<pre class="prettyprint">
+//assuming the hash above
+//here we set the firstKay to 200
+hashVar.set('firstKey', 200);
+ 
+//here we get the value of firstKey, which is now 200
+var hashValue = hashVar.get('firstKey');
+</pre>
+
+<p>You can also get a value by refering to hash.keyName:</p>
+
+<pre class="prettyprint">
+var hashValue = hashVar.firstKey;
+//is the same as
+var hashValue = hashVar.get('firstKey');
+</pre>
+
+<h4>Adding a new pair to a hash</h4>
+
+<p><strong>.extend();</strong></p>
+<p>You can add a new set of key/value pairs (or several sets) with .extend().   First, let&#8217;s create a new pair object.</p>
+
+<pre class="prettyprint">
+//this is a generic object
+//it contains key value pairs
+//but not the capabilities of a hash
+var genericObject = {
+	'third': 450,
+	'fourth': 89
+};
+</pre>
+
+<p>If we want to add this set of pairs to our existing hash, we just .extend(); the original hash to make room.</p>
+
+<pre class="prettyprint">
+//now hashVar contains all the pairs within genericObject
+hashVar.extend(genericObject);
+</pre>
+
+<p><strong>Note:</strong> Any duplicate keys will be overridden by the second set.  So, if you have &#8220;firstKey&#8221;: &#8220;letterA&#8221; in the original hash, and you extend it with the &#8220;firstKey&#8221;: &#8220;letterB,&#8221; the resulting hash would read, &#8220;firstKey&#8221;: &#8220;letterB.&#8221;</p>
+
+<h4>Combining two hashes</h4>
+<p><strong>.combine();</strong></p>
+<p>This lets you combine two hashes, and keeps the original if there are duplicate keys.  Other than that, works just like .extend.</p>
+
+<h4>Removing pair from a hash</h4>
+<p><strong>.erase();</strong></p>
+<p>We have seen this one before.  It works just like you would expect.  You state the hash, then tack on .erase();, and finally you put the &#8216;key&#8217; inside the (parenthesis)</p>
+
+<pre class="prettyprint">
+hashVar.erase('firstKey');
+</pre>
+
+<h4>Hashes and .each()</h4>
+<p>Hashes have a special relationship with .each(), and when you iterate through a hash, the each function will pass you the &#8220;value&#8221; as the first parameter and the &#8220;key&#8221; as the second -  like when you use .each on an array and it includes each &#8220;item&#8221; as the first parameter.</p>
+
+<pre class="prettyprint">
+hashVar.each(function(value, key) {
+	//this would send up one alert for each pair in the hash
+	alert(key + ":" + value);
+});
+</pre>
+
+<h3>To Learn More&#8230;</h3>
+<p>That&#8217;s all we are going to cover on hashes for now.  As we get further into the series, we&#8217;ll find some opportunities to look at other capabilities.  But for now, hopefully this can serve as an introduction to the concept if you are new to this sort of thing.  Soon enough, we are going to be covering classes, and then things will really start to come together.  In the meantime, check out the <a>hashes</a> section of the docs.</p>
+
+<h4>Tomorrow&#8217;s Tutorial</h4>
+<p><a href="index.php?day=15">Learn how to set up and configure a Mootools slider</a></p>
+
+					
