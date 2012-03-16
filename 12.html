@@ -2,6 +2,10 @@
 layout: default
 title: Drag.Move - Drag and Drop with Mootools 1.2
 ---
+
+<!-- Working Examples for Day 12 -->
+<script type="text/javascript" src="js/days/12.js" ></script>
+
 <h2>Drag.Move - Drag and Drop with Mootools 1.2</h2>
 <p>If you haven&#8217;t already, be sure and check out the rest of the <a href="index.html">Mootools 1.2 tutorials</a> in our 30 days series.</p>
 
@@ -231,67 +235,125 @@ window.addEvent('domready', function() {
 <pre class="prettyprint">
 /* this is generally a good idea */
 body {
-	margin: 0
-	padding: 0
+	margin: 0;
+	padding: 0;
 }
  
 /* make sure the draggable element has "position: absolute" 
  and then top and left are set for the start position */
 #drag_me {
-	width: 100px
-	height: 100px
-	background-color: #333
-	position: absolute
-	top: 0
-	left: 0
+	width: 100px;
+	height: 100px;
+	background-color: #333;
+	position: absolute;
+	top: 0;
+	left: 0;
 }
  
 #drop_here {
-	width: 200px
-	height: 200px
-	background-color: #eee
+	width: 200px;
+	height: 200px;
+	background-color: #eee;
 }
  
 /* make sure the drag container is set with position relative */
 #drag_cont {
-	background-color: #ccc  
-	height: 600px 
-	width: 500px
-	position: relative
-	margin-top: 100px
-	margin-left: 100px
+	background-color: #ccc;
+	height: 600px;
+	width: 500px;
+	position: relative;
+	margin-top: 100px;
+	margin-left: 100px;
 }
  
 #drag_me_handle {
-	width: 100%
-	height: auto
-	background-color: #666
+	width: 100%;
+	height: auto;
+	background-color: #666;
 
 }
  
 #drag_me_handle span {
-	display: block
-	padding: 5px
+	display: block;
+	padding: 5px;
 }
  
 .indicator {
-	width: 100%
-	height: auto
-	background-color: #0066FF
-	border-bottom: 1px solid #eee
+	width: 100%;
+	height: auto;
+	background-color: #0066FF;
+	border-bottom: 1px solid #eee;
 }
  
 .indicator span {
-	padding: 10px
-	display: block
+	padding: 10px;
+	display: block;
 }
  
 .draggable {
-	width: 200px
-	height: 200px
-	background-color: blue
+	width: 200px;
+	height: 200px;
+	background-color: blue;
 }
 </pre>
+
+<style type="text/css">
+/* make sure the draggable element has "position: absolute" and then top and left are set for the start position */
+#drag_me {
+	width: 100px;
+	height: 100px;
+	background-color: #333;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+ 
+#drop_here {
+	width: 200px;
+	height: 200px;
+	background-color: #eee;
+}
+ 
+/* make sure the drag container is set with position relative */
+#drag_cont {
+	background-color: #ccc;
+	height: 600px;
+	width: 500px;
+	position: relative;
+	margin-top: 100px;
+	margin-left: 100px;
+}
+ 
+#drag_me_handle {
+	width: 100%;
+	height: auto;
+	background-color: #666;
+
+}
+ 
+#drag_me_handle span {
+	display: block;
+	padding: 5px;
+}
+ 
+.indicator {
+	width: 100%;
+	height: auto;
+	background-color: #0066FF;
+	border-bottom: 1px solid #eee;
+}
+ 
+.indicator span {
+	padding: 10px;
+	display: block;
+}
+ 
+.draggable {
+	width: 200px;
+	height: 200px;
+	background-color: blue;
+}
+</style>
 
 <p>And now we set up our html:</p>
 
