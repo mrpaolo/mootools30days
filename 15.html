@@ -2,6 +2,10 @@
 layout: default
 title: Mootools 1.2 Sliders
 ---
+
+<!-- Working Examples for Day 15 -->
+<script type="text/javascript" src="js/days/15.js" ></script>
+
 <h2>Mootools 1.2 Sliders</h2>
 <p>If you haven&#8217;t already, be sure and check out the rest of the <a href="index.html">Mootools 1.2 tutorials</a> in our 30 days series.</p>
 
@@ -19,15 +23,15 @@ title: Mootools 1.2 Sliders
 
 <pre class="prettyprint">
 #slider {
-	width: 200px
-	height: 20px
-	background-color: #0099FF
+	width: 200px;
+	height: 20px;
+	background-color: #0099FF;
 }
  
 #knob {
-	width: 20px
-	height: 20px
-	background-color: #993333
+	width: 20px;
+	height: 20px;
+	background-color: #993333;
 }
 </pre>
 
@@ -174,9 +178,35 @@ window.addEvent('domready', function() {
 	</div>
 
 	<span id="stepsV_number"></span>
-</div>
 	
-<p>Notice on the vertical example that we not only change &#8220;mode&#8221; to &#8220;vertical,&#8221; we also change .setStyle() to &#8220;top&#8221; instead of &#8220;left&#8221; within the onTick event.  Also, see how in &#8220;range&#8221; we start at -10 then go to 0. Then, when we display the number inside onChange, we multiply the negative value by -1, resulting in the positive counterpart.  This accomplishes two things: first, it lets us change the value from 10 to 0, with 0 at the bottom.  While this could be accomplished by setting the range to 10, 0 <strong>the mousewheel becomes inverted.</strong>.  Which brings us to the second reason - the mousewheel reads the values, not the direction you want the handle to go, so the only way to have the mousewheel read the slider correctly AND have the values start at 0 on the bottom was to pull this little trick</p>
+	<style text/css">
+	#slider {
+		width: 200px;
+		height: 20px;
+		background-color: #0099FF;
+	}
+	#knob {
+		width: 20px;
+		height: 20px;
+		background-color: #993333;
+	}
+	#sliderv {
+		width: 20px;
+		height: 200px;
+		background-color: #0099FF;
+	}
+	#knobv {
+		width: 20px;
+		height: 20px;
+		background-color: #993333;
+	}
+	</style>
+</div>
+
+<hr />
+	
+<p>Notice on the vertical example that we not only change &#8220;mode&#8221; to &#8220;vertical,&#8221; we also change .setStyle() to &#8220;top&#8221; instead of &#8220;left&#8221; within the onTick event.  Also, see how in &#8220;range&#8221; we start at -10 then go to 0. Then, when we display the number inside onChange, we multiply the negative value by -1, resulting in the positive counterpart.</p>
+<p>This accomplishes two things: first, it lets us change the value from 10 to 0, with 0 at the bottom.  While this could be accomplished by setting the range to 10, 0 <strong>the mousewheel becomes inverted.</strong>.  Which brings us to the second reason - the mousewheel reads the values, not the direction you want the handle to go, so the only way to have the mousewheel read the slider correctly AND have the values start at 0 on the bottom was to pull this little trick</p>
 
 <p><strong>Note:</strong> regarding the use of &#8220;top&#8221; and &#8220;left&#8221; within the onTick event, I can&#8217;t say for sure whether or not this is &#8220;regulation&#8221; mootools.  This is just how I was able to get it to work, and I would interested to hear if there are other, possibly cleaner ways.</p>
 <h3>To Learn More&#8230;</h3>

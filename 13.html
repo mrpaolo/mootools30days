@@ -2,6 +2,10 @@
 layout: default
 title: Mootools and Regular Expressions
 ---
+
+<!-- Working Examples for Day 13 -->
+<script type="text/javascript" src="js/days/13.js" ></script>
+
 <h2>Mootools and Regular Expressions</h2>
 <p>If you haven&#8217;t already, I&#8217;d suggest checking out the rest of the <a href="index.html"> 30 Days of Mootools Tutorials</a> before continuing on. For day 13, we&#8217;ll do a brief overview of regular expressions, then look at the functionality Mootools offers to make life easier when dealing with them.</p>
 
@@ -40,7 +44,7 @@ string_to_match.contains('nything')
 string_to_match.test('nything');
 </pre>
 
-<p>Also, be aware that unless you explicitly tell it not to, the regex is case sensitive, so searching for &#8220;match&#8221; when the string contains &#8220;Match&#8221; will return false. You can play around with it below.</p>
+<p>Also, be aware that unless you explicitly tell it not to, <strong>the regex is case sensitive</strong>, so searching for &#8220;match&#8221; when the string contains &#8220;Match&#8221; will return false. You can play around with it below.</p>
 
 <pre class="prettyprint">
 var regex_demo = function(){
@@ -71,7 +75,7 @@ var regex_demo = function(){
 			<td><input id="regex_1_match" type="text" value="any" /></td>
 		</tr>
 		<tr>
-			<td><button id="regex_1_button">Run Regex</button></td>
+			<td><button id="regex_1_button" class="btn btn-primary">Run Regex</button></td>
 			<td><div id="regex_1_result">&nbsp;</div></td>
 		</tr>
 	</tbody>
@@ -134,7 +138,7 @@ var regex_demo = function(){
 			<td><input id="regex_2_param" type="checkbox" /></td>
 		</tr>
 		<tr>
-			<td><button id="regex_2_button">Run Regex</button></td>
+			<td><button id="regex_2_button" class="btn btn-primary">Run Regex</button></td>
 			<td><div id="regex_2_result">&nbsp;</div></td>
 		</tr>
 	</tbody>
@@ -181,7 +185,7 @@ var is_false = string_to_test.match("^match");
 			<td><input id="regex_3_param" type="checkbox" /></td>
 		</tr>
 		<tr>
-			<td><button id="regex_3_button">Run Regex</button></td>
+			<td><button id="regex_3_button" class="btn btn-primary">Run Regex</button></td>
 			<td><div id="regex_3_result">&nbsp;</div></td>
 		</tr>
 	</tbody>
@@ -237,7 +241,7 @@ var is_false = string_to_test.match("^lets everything$");
 			<td><input id="regex_4_param" type="checkbox" /></td>
 		</tr>
 		<tr>
-			<td><button id="regex_4_button">Run Regex</button></td>
+			<td><button id="regex_4_button" class="btn btn-primary">Run Regex</button></td>
 			<td><div id="regex_4_result">&nbsp;</div></td>
 		</tr>
 	</tbody>
@@ -288,7 +292,7 @@ returns_true = second_string_to_test("[mb]oo");
 			<td><input id="regex_5_param" type="checkbox" /></td>
 		</tr>
 		<tr>
-			<td><button id="regex_5_button">Run Regex</button></td>
+			<td><button id="regex_5_button" class="btn btn-primary">Run Regex</button></td>
 			<td></td>
 		</tr>
 	</tbody>
@@ -335,7 +339,7 @@ string_to_test.test([ [a-d] | [1-5] ]);
 			<td><input id="regex_6_param" type="checkbox" /></td>
 		</tr>
 		<tr>
-			<td><button id="regex_6_button">Run Regex</button></td>
+			<td><button id="regex_6_button" class="btn btn-primary">Run Regex</button></td>
 			<td></td>
 		</tr>
 	</tbody>
@@ -437,7 +441,7 @@ var regex_demo = function(){
 			<td><input id="regex_7_param" type="checkbox" /></td>
 		</tr>
 		<tr>
-			<td><button id="regex_7_button">Run Regex</button></td>
+			<td><button id="regex_7_button" class="btn btn-primary">Run Regex</button></td>
 			<td><div id="regex_7_result">&nbsp;</div></td>
 		</tr>
 	</tbody>
