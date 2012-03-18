@@ -2,6 +2,10 @@
 layout: default
 title: Mootools 1.2 Tooltips Tutorial
 ---
+
+<!-- Working Examples for Day 19 -->
+<script type="text/javascript" src="js/days/19.js" ></script>
+
 <h2>Mootools 1.2 Tooltips Tutorial</h2>
 
 If you haven&#8217;t already, be sure and check out the rest of the <a href="index.html">Mootools 1.2 tutorials</a> in our 30 days series.</p>
@@ -13,8 +17,7 @@ If you haven&#8217;t already, be sure and check out the rest of the <a href="ind
 <p>Creating new tooltips is very simple.  First, let&#8217;s create the element where we will attach our tool tip.</p>
 
 <pre class="prettyprint">
-&lt;a&gt;
-&lt;/a&gt;&lt;a id=&quot;tooltipID1&quot; class=&quot;tooltip&quot; title=&quot;1st Tooltip Title&quot; rel=&quot;here is the default 'text' of 1&quot; href=&quot;http://www.consideropen.com&quot;&gt;Tool tip 1&lt;/a&gt;
+&lt;a id=&quot;tooltipID1&quot; class=&quot;tooltip_demo_one&quot; title=&quot;1st Tooltip Title&quot; rel=&quot;here is the default 'text' of 1&quot; href=&quot;http://www.consideropen.com&quot;&gt;Tool tip 1&lt;/a&gt;
 </pre>
 
 <p>Mootools 1.2 tool tips will display the title and the rel text by default.  If there is no rel copy, it will display the href.</p>
@@ -22,13 +25,13 @@ If you haven&#8217;t already, be sure and check out the rest of the <a href="ind
 <p>To create a new default tool tip:</p>
 
 <pre class="prettyprint">
-var customTips = $$('.tooltip');
+var customTips = $$('.tooltip_demo_one');
 var toolTips = new Tips(customTips);
 </pre>
 
 <p>Without any styling, you will get a tool tip that looks like this:</p>
 
-<p><a id="tooltipIDA" class="tooltipA" title="1st Tooltip Title" rel="here is the default 'text' of 1" href="http://www.consideropen.com/">Tool tip 1</a></p>
+<p><a id="tooltipIDA" class="tooltip_demo_one" title="1st Tooltip Title" rel="here is the default 'text' of 1" href="http://www.consideropen.com/">Tool tip 1</a></p>
 
 <h4>Styling your tooltip</h4>
 <p>The mootools output gives you a lot of control over the style—take a look at the tooltip html:</p>
@@ -55,20 +58,37 @@ var toolTipsB = new Tips(customTipsB, {
 
 <pre>
 .custom_tip .tip {
-	background-color: #333
-	padding: 5px
+	background-color: #333;
+	padding: 5px;
 }
 .custom_tip .tip-title {
-	color: #fff
-	background-color: #666
-	font-size: 20px
-	padding: 5px
+	color: #fff;
+	background-color: #666;
+	font-size: 20px;
+	padding: 5px;
 }
 .custom_tip .tip-text {
-	color: #fff
-	padding: 5px
+	color: #fff;
+	padding: 5px;
 }
 </pre>
+
+<style type="text/css">
+.custom_tip .tip {
+	background-color: #333;
+	padding: 5px;
+}
+.custom_tip .tip-title {
+	color: #fff;
+	background-color: #666;
+	font-size: 20px;
+	padding: 5px;
+}
+.custom_tip .tip-text {
+	color: #fff;
+	padding: 5px;
+}
+</style>
 
 <p><a id="tooltipIDB" class="tooltipB" title="2nd Tooltip Title" rel="here is the default 'text' of 2" href="http://www.consideropen.com/">Tool tip 2</a></p>
 
@@ -126,7 +146,7 @@ toolTips.dettach('#tooltipID3');
 <p>For this example, we will create two instances of the Tips plugin, so we can have two different styles of tooltips.  We will also integrate the options, events and methods we saw above.</p>
 
 <pre class="prettyprint">
-var customTips = $$('.tooltip');
+var customTips = $$('.tooltip_demo');
 var toolTips = new Tips(customTips, {
 	//this will set how long before
 	//the tooltip will wait to show up
@@ -192,12 +212,17 @@ toolTips.attach('#tooltipID4');
 
 <div id="show" class="ind">onShow</div>
 <div id="hide" class="ind">onHide</div>
-<p><!-- the rel will be the text, but if you don't fill in a rel, it will show the href --><br />
-<a id="tooltipID1" class="tooltip" title="1st Tooltip Title" rel="here is the default 'text' of 1" href="http://www.consideropen.com/">Tool tip 1</a></p>
-<p><a id="tooltipID2" class="tooltip" title="2nd Tooltip Title" rel="here is the default 'text' of 2" href="http://www.consideropen.com/blog">Tool tip is detached</a></p>
-<p><a id="tooltipID3" class="tooltip" title="3rd Tooltip Title" rel="here is the default 'text' of 3" href="http://www.consideropen.com/contact">Tool tip 3</a></p>
-<p><a id="tooltipID4" class="tooltip" title="4rd Tooltip Title" rel="here is the default 'text' of 4, i was detached then attached" href="http://web.archive.org/web/20090214072209/http://www.consideropen.com/blog/2008/08/30-days-of-mootools-12-tutorials-day-1-intro-to-the-library/">Tool tip detached then attached again. </a></p>
-<p><a id="tooltipID5" class="tooltip2" title="Other Tooltip Title" rel="here is the default 'text' of 'other style'" href="http://web.archive.org/web/20090214072209/http://www.consideropen.com/">A differently styled tool tip</a></p>
+
+<!-- the rel will be the text, but if you don't fill in a rel, it will show the href -->
+<p><a id="tooltipID1" class="tooltip_demo" title="1st Tooltip Title" rel="here is the default 'text' of 1" href="http://www.consideropen.com/">Tool tip 1</a></p>
+
+<p><a id="tooltipID2" class="tooltip_demo" title="2nd Tooltip Title" rel="here is the default 'text' of 2" href="http://www.consideropen.com/blog">Tool tip is detached</a></p>
+
+<p><a id="tooltipID3" class="tooltip_demo" title="3rd Tooltip Title" rel="here is the default 'text' of 3" href="http://www.consideropen.com/contact">Tool tip 3</a></p>
+
+<p><a id="tooltipID4" class="tooltip_demo" title="4rd Tooltip Title" rel="here is the default 'text' of 4, i was detached then attached" href="http://www.consideropen.com/blog/2008/08/30-days-of-mootools-12-tutorials-day-1-intro-to-the-library/">Tool tip detached then attached again. </a></p>
+
+<p><a id="tooltipID5" class="tooltip2" title="Other Tooltip Title" rel="here is the default 'text' of 'other style'" href="http://www.consideropen.com/">A differently styled tool tip</a></p>
 
 <h3>To Learn More&#8230;</h3>
 <p>Read over the docs section on <a href="http://docs.mootools.net/Plugins/Tips">Tips</a>.  Also, here is a great article by David Walsh on <a href="http://davidwalsh.name/mootools-12-tooltips-customize">customizing your Mootools Tips</a>.</p>

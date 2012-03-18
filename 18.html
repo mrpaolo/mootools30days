@@ -2,6 +2,10 @@
 layout: default
 title: MooTools Classes part I
 ---
+
+<!-- Working Examples for Day 18 -->
+<script type="text/javascript" src="js/days/18.js" ></script>
+
 <h2>MooTools Classes part I</h2>
 
 <p>If you haven&#8217;t already, be sure and check out the rest of the <a href="index.html">Mootools 1.2 tutorials</a> in our 30 days series.</p>
@@ -34,7 +38,7 @@ var run_demo_one = function(){
 }
 </pre>
 
-<p><button id="run_demo_1" class="demo_button" class="btn btn-primary">run_demo_1()</button></p>
+<p><button id="run_demo_1" class="btn btn-primary">run_demo_1()</button></p>
 
 <h3>Methods/Functions</h3>
 <p>Method is the term used to refer to functions which belong to a specific class. These methods have to be called from an instance of this class, and can&#8217;t be called on their own. You define a method just like you would define a variable, except instead of giving it a static value, you pass it an anonymous function:</p>
@@ -78,7 +82,7 @@ var run_demo_2 = function(){
 }
 </pre>
 
-<p><button id="run_demo_2" class="demo_button" class="btn btn-primary">run_demo_2()</button></p>
+<p><button id="run_demo_2" class="btn btn-primary">run_demo_2()</button></p>
 
 <h3>initialize : </h3>
 <p>The initialize option in the Class object gives you a place to put any set-up work that needs to be done for the class, as well as giving you a place to setup user-configurable options and variables. You define it just like you define a method:</p>
@@ -259,7 +263,7 @@ var Class_four = new Class({
 	},
 });
 
-var run_demo_4 = function ){
+var run_demo_4 = function(){
 	var demo_4 = new Class_four({
 		option_one : "New Value"
 	});
