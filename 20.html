@@ -2,27 +2,32 @@
 layout: default
 title: Project - A few ways to created &#8220;tabbed&#8221; content
 ---
+
+<!-- Working Examples for Day 20 -->
+<script type="text/javascript" src="js/days/20.js" ></script>
+
 <h2>Project - A few ways to created &#8220;tabbed&#8221; content</h2>
 
 <p>If you haven&#8217;t already, be sure and check out the rest of the <a href="index.html">Mootools 1.2 tutorials</a> in our 30 days series.</p>
 
-<p>Welcome back to 30 days of Mootools.  From here on out, we are going to loosen our publishing schedule, instead of every day, you can expect new tutorials every few days because we are pretty busy.  Today, we are going to break away from the our coverage of the library and programming basics to do a short project. Using what we have learned so far, there are several ways we can use tabs (and other li&#8217;s) to create content that will only show on hover or on click.</p>
+<p>Welcome back to 30 days of Mootools.  From here on out, we are going to loosen our publishing schedule, instead of every day, you can expect new tutorials every few days because we are pretty busy.</p>
+
+<p>Today, we are going to break away from the our coverage of the library and programming basics to do a short project. Using what we have learned so far, there are several ways we can use tabs (and other li&#8217;s) to create content that will only show on hover or on click.</p>
 
 <h3>Simple &#8220;Extra Info&#8221; Tabs</h3>
 <h4>Tabs with info on hover</h4>
 <p>For this first step, we are going to create a simple menu that will reveal additional info when you hover over a list item. First, set up the html - lets do a ul with four items, then create four divs (one corresponding to each list item):</p>
 
 <pre class="prettyprint">
-//here is our menu
+&lt;!-- here is our menu --&gt;
 &lt;ul id=&quot;tabs&quot;&gt;
    	&lt;li id=&quot;one&quot;&gt;One&lt;/li&gt;
         &lt;li id=&quot;two&quot;&gt;Two&lt;/li&gt;
-
         &lt;li id=&quot;three&quot;&gt;Three&lt;/li&gt;
         &lt;li id=&quot;four&quot;&gt;Four&lt;/li&gt;
 &lt;/ul&gt;
 &nbsp;
-//and here are our content divs
+&lt;!-- and here are our content divs --&gt;
 &lt;div id=&quot;contentone&quot; class=&quot;hidden&quot;&gt;content for one&lt;/div&gt;
 &lt;div id=&quot;contenttwo&quot; class=&quot;hidden&quot;&gt;content for two&lt;/div&gt;
 &lt;div id=&quot;contentthree&quot; class=&quot;hidden&quot;&gt;content for three&lt;/div&gt;
@@ -111,6 +116,12 @@ window.addEvent('domready', function() {
 
 <p>As you can see, this is all very familiar and setting this up doesn&#8217;t require anything we havn&#8217;t covered so far.</p>
 
+<style type="text/css">
+.hidden_demo {
+	display: none;
+}
+</style>
+
 <ul id="tabs">
 	<li id="one">One</li>
 	<li id="two">Two</li>
@@ -119,14 +130,17 @@ window.addEvent('domready', function() {
 </ul>
 
 <div id="content_wrap">
-	<div id="contentone" class="hidden">content for one</div>
-	<div id="contenttwo" class="hidden">content for two</div>
-	<div id="contentthree" class="hidden">content for three</div>
-	<div id="contentfour" class="hidden">content for four</div>
+	<div id="contentone" class="hidden_demo">content for one</div>
+	<div id="contenttwo" class="hidden_demo">content for two</div>
+	<div id="contentthree" class="hidden_demo">content for three</div>
+	<div id="contentfour" class="hidden_demo">content for four</div>
 </div>
+
+<hr />
 
 <h4>Tabs that show content on click</h4>
 <p>Taking the idea above, we can easily adjust it to reveal content on click.  Let&#8217;s use the same html as above, and adjust the Mootools code for a click event.</p>
+
 <p>First, we are going to need to adjust our functions.  Since we can&#8217;t hide the content on mouseleave, we need to find another way to switch between the divs. Perhaps the easiest option is to hide them all on click, and just show &#8220;this&#8221; one (being whichever one is passed on click):</p>
 
 <pre class="prettyprint">
@@ -152,6 +166,12 @@ window.addEvent('domready', function() {
 	$('fourB').addEvent('click', showFunction.bind(elFourB));
 });
 </pre>
+
+<style type="text/css">
+.hiddenB {
+	display: none;
+}
+</style>
 
 <ul id="tabs">
 	<li id="oneB">One</li>
@@ -220,6 +240,13 @@ window.addEvent('domready', function() {
 </pre>
 
 <p>If we use the same html that we have above, we will get something like this:</p>
+
+<style type="text/css">
+.hiddenM {
+	display: none;
+}
+</style>
+
 
 <div id="wrapM">
 	<ul id="tabsM">
@@ -326,6 +353,12 @@ window.addEvent('domready', function() {
 	$('fourMel').addEvent('click', showFunctionFour.bind(elementEffects)); 
 });
 </pre>
+
+<style type="text/css">
+.hiddenMel {
+	display: none;
+}
+</style>
 
 <div id="wrapMel">
 	<ul id="tabsel">

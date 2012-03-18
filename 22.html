@@ -2,9 +2,16 @@
 layout: default
 title: Multiple morphs with Fx.Elements
 ---
+
+<!-- Working Examples for Day 22 -->
+<script type="text/javascript" src="js/days/22.js" ></script>
+
+
 <h2>Multiple morphs with Fx.Elements</h2>
 
-<p>Welcome back to 30 days of Mootools 1.2 tutorials.  If you haven&#8217;t already, be sure to check out <a href="index.html">the rest of our mootools series</a>.  Today, we are going to take a look at the Fx.Elements plugin, which is basically an extension of Fx.Morph.  Instead of applying to a single element, Fx.Elements allows you to add the Fx functionality to multiple dom elements in one go. This can be very useful when you are applying the same options to more than one element, as we saw in <a href="20.html">the final example on day 20</a>.</p>
+<p>Welcome back to 30 days of Mootools 1.2 tutorials.  If you haven&#8217;t already, be sure to check out <a href="index.html">the rest of our mootools series</a>.  Today, we are going to take a look at the Fx.Elements plugin, which is basically an extension of Fx.Morph.</p>
+
+<p>Instead of applying to a single element, Fx.Elements allows you to add the Fx functionality to multiple dom elements in one go. This can be very useful when you are applying the same options to more than one element, as we saw in <a href="20.html">the final example on day 20</a>.</p>
 
 <h3>The Basics</h3>
 <p>Implementing Fx.Elements looks just like Fx.Morph. The difference between the two doesn&#8217;t come into play until you .start({}) an effect or .set({}) some styles.</p>
@@ -22,7 +29,6 @@ var fxElementsObject = new Fx.Elements(fxElementsArray, {
 	link: 'chain',
 	duration: 1000,
 	transition: 'sine:in:out',
-
 	//Fx Events
 	onStart: function(){
 		startInd.highlight('#C3E608');
@@ -119,7 +125,6 @@ fxElementsObject .start({
 
 <pre class="prettyprint">
 var startFXElement = function(){
-
 	this.start({
 		'0': {
 			'height': [50, 200],
@@ -146,7 +151,6 @@ var startFXElementB = function(){
 	});
 }
 
-
 var setFXElement = function(){
 	this.set({
 		'0': {
@@ -162,22 +166,17 @@ var setFXElement = function(){
 	});
 }
 
-
 window.addEvent('domready', function() {
-	
 	var fxElementsArray = $$('.myElementClass');
 	var startInd = $('start_ind');
 	var cancelInd = $('cancel_ind');
 	var completeInd = $('complete_ind');
 	var chainCompleteInd = $('chain_complete_ind');
-
 	var fxElementsObject = new Fx.Elements(fxElementsArray, {
-		
 		//Fx Options
 		link: 'chain',
 		duration: 1000,
 		transition: 'sine:in:out',
-
 		//Fx Events
 		onStart: function(){
 			startInd.highlight('#C3E608');
@@ -196,17 +195,35 @@ window.addEvent('domready', function() {
 	$('fxstart').addEvent('click', startFXElement.bind(fxElementsObject));
 	$('fxstartB').addEvent('click', startFXElementB.bind(fxElementsObject));
 	$('fxset').addEvent('click', setFXElement.bind(fxElementsObject));
-
 	$('fxpause').addEvent('click', function(){
 		fxElementsObject.pause();
 	});
-
 	$('fxresume').addEvent('click', function(){
 		fxElementsObject.resume();
 	});
-
 });
 </pre>
+
+<style type="text/css">
+.ind {
+	width: 200px;
+	padding: 10px;
+	background-color: #87AEE1;
+	font-weight: bold;
+	border-bottom: 1px solid white;
+}
+.myElementClass {
+	height: 50px;
+	width: 100px;
+	background-color: #FFFFCC;
+	border: 1px solid #FFFFCC;
+	padding: 20px;
+}
+#buttons {
+	margin: 20px 0;
+	display: block;
+}
+</style>
 
 <div id="start_ind" class="ind">onStart</div>
 <div id="cancel_ind" class="ind">onCancel</div>
@@ -223,6 +240,8 @@ window.addEvent('domready', function() {
 
 <div class="myElementClass">Element 0</div>
 <div class="myElementClass">Element 1</div>
+
+<hr />
 
 <h3>To Learn More&#8230;</h3>
 <p>As you can see, Fx.Elements is very straightforward.  To learn more, check out the <a href="http://mootools.net/docs/Plugins/Fx.Elements">Fx.Element docs</a>, the <a href="http://mootools.net/docs/Fx/Fx.Morph">Fx.Morph</a> and <a href="/http://mootools.net/docs/Fx/Fx">Fx docs</a>.</p>

@@ -2,6 +2,10 @@
 layout: default
 title: Displaying elements with Fx.Slide
 ---
+
+<!-- Working Examples for Day 23 -->
+<script type="text/javascript" src="js/days/23.js" ></script>
+
 <h2>Displaying elements with Fx.Slide</h2>
 
 <p>Welcome to day 23 of 30 days of Mootools 1.2 tutorials.  If you haven&#8217;t already, be sure to check out <a href="index.html">the rest of our mootools series</a>.  Continuing with our tutorials about the Fx plugins, we are going to take a look at Fx.Slide.  This plugin lets you display content by sliding it into view.  It is very simple to use and makes a great addition to your UI toolkit.</p>
@@ -30,14 +34,11 @@ title: Displaying elements with Fx.Slide
 <pre class="prettyprint">
 var slideElement = $('slide_element');
 var slideVar = new Fx.Slide(slideElement, {
-
 	//Fx.Slide Options
 	mode: 'vertical', //default is 'vertical'
-
 	//Fx Options
 	transition: 'sine:in',
 	duration: 300, 
-
 	//Fx Events
 	onStart: function(){
 		$('start').highlight("#EBCC22");
@@ -183,18 +184,14 @@ window.addEvent('domready', function() {
 
 	//EXAMPLE A
 	var slideElement = $('slideA');
-
 	var slideVar = new Fx.Slide(slideElement, {
 		//Fx.Slide Options
-
 		mode: 'horizontal', //default is 'vertical'
 		//wrapper: this.element, //default is this.element
-
 		//Fx Options
 		link: 'cancel',
 		transition: 'elastic:out',
 		duration: 'long', 
-
 		//Fx Events
 		onStart: function(){
 			$('start').highlight("#EBCC22");
@@ -217,17 +214,14 @@ window.addEvent('domready', function() {
 
 	//EXAMPLE B
 	var slideElementB = $('slideB');
-
 	var slideVarB = new Fx.Slide(slideElementB, {
 		//Fx.Slide Options
 		mode: 'vertical', //default is 'vertical'
-
 		//Fx Options
 		//notice how chaining lets you click multiple time 
 		//then mouse away and the effects will keep going
 		//for every click
 		link: 'chain', 
-
 		//Fx Events
 		onStart: function(){
 			$('start').highlight("#EBCC22");
@@ -250,18 +244,14 @@ window.addEvent('domready', function() {
 
 	//EXAMPLE C
 	var slideElementC = $('slideC');
-
 	var slideVarC = new Fx.Slide(slideElementC, {
 		//Fx.Slide Options
-
 		mode: 'vertical', //default is 'vertical'
 		//wrapper: this.element, //default is this.element
-
 		//Fx Options
 		//link: 'cancel',
 		transition: 'sine:in',
 		duration: 300, 
-
 		//Fx Events
 		onStart: function(){
 			$('start').highlight("#EBCC22");
@@ -283,24 +273,41 @@ window.addEvent('domready', function() {
 	$('openD').addEvent('click', function(){
 		$('slideD').slide('toggle');
 	});
-
+	
 	//EXAMPLE C
 	var slideElementE = $('slideE');
 	var slideWrap = $('slide_wrap');
-
 	var slideVarE = new Fx.Slide(slideElementE, {
 		//Fx.Slide Options
 		//mode: 'vertical', //default is 'vertical'
 		wrapper: slideWrap //default is this.element
 	}).hide(); 
 
-
 	$('openE').addEvent('click', function(){
 		slideVarE.toggle();
 	});
-
 });
 </pre>
+
+<style type="text/css">
+.ind {
+	width: 200px;
+	padding: 10px;
+	background-color: #87AEE1;
+	font-weight: bold;
+	border-bottom: 1px solid white;
+}
+.slide {
+	margin: 20px 0; 
+	padding: 10px;
+	width: 200px;
+	background-color: #DAF7B4;
+}
+#slide_wrap {
+	padding: 30px;
+	background-color: #D47000;
+}
+</style>
 
 <div id="start" class="ind">Start</div>
 <div id="cancel" class="ind">Cancel</div>
