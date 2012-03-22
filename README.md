@@ -13,7 +13,7 @@ The copyright (and gratitude) for the original lessons is hold by [ConsiderOpen]
 ---
 
 ### Project Steps:
-1. Setup the original tutorials
+1. Setup the original tutorials // [0.1](https://github.com/mrpaolo/mootools30days/tree/0.1)
 2. Update the tutorials to the actual MooTools version
 3. Expand the actual tutorials and add new ones to complete the 30 lessons
 
